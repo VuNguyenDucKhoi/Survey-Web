@@ -32,7 +32,6 @@ data.push({
 //     answer_id: answer_idTextarea,
 //     answer: '',
 // })
-console.log(data)
 
 //#endregion
 
@@ -121,3 +120,4 @@ function add1() {
 document.getElementById('btn-add0').addEventListener('click', add0);
 document.getElementById('btn-add1').addEventListener('click', add1);
 
+console.log(data)

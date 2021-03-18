@@ -1,35 +1,49 @@
+
 const sendData = document.getElementById('sendData');
-const database = firebase.firestore();
-const formsCollection = database.collection('forms');
-var data = []
+var loadData = []
 
-    formsCollection.doc("0").set({
-        data : data,
-        link : window.location.href
+var loadAmount = []
+var formId = 0
+
+selectFormsCollection.doc("0").get()
+    .then(form => {
+        if (form.exists) {
+            loadAmount = form.data()
+            console.log("loadAmount", "=>", loadAmount.id)
+            formId = loadAmount.id
+            formsCollection.doc(formId.toString()).get()
+                .then(form => {
+                    if (form.exists) {
+                        loadData = form.data()
+                        console.log("Loaddata", "=>", loadData.data)
+                        myFunction()
+                    }
+                    else
+                        console.log('form does not exist');
+                })
+                .catch(error => { console.error(error) })
+        }
+        else
+            console.log('form does not exist');
     })
-    .then(() => {console.log('Data Successfully Loaded');})
-    .catch(error => {console.error(error)});
-
-console.log(data)
-
+    .catch(error => { console.error(error) })
 
 //#region test
-function myFunction(){
-    for (var key in data){
-        switch(data[key].type){
+function myFunction() {
+    for (var key in loadData.data) {
+        switch (loadData.data[key].type) {
             case 0:
-                render_question0(data[key].title_idTextarea, data[key].description_idTextarea)
+                render_question0(loadData.data[key].title_idTextarea, loadData.data[key].description_idTextarea)
                 break
             case 1:
-                render_question1(data[key].question_idTextarea, data[key].answer_idTextarea)
+                render_question1(loadData.data[key].question_idTextarea, loadData.data[key].answer_idTextarea)
                 break
         }
     }
 }
-
 function render_question0(title_idTextarea, description_idTextarea) {
     var html = document.getElementById("question");
-    html.insertAdjacentHTML("beforeend",` 
+    html.insertAdjacentHTML("beforeend", ` 
     <div class="type1">
     <form>
         <div class="row100">
@@ -45,7 +59,6 @@ function render_question0(title_idTextarea, description_idTextarea) {
     </form>
 </div>`)
 }
-
 function render_question1(question_idTextarea, answer_idTextarea) {
     var html = document.getElementById("question");
     html.insertAdjacentHTML("beforeend", `<div class="type2">
@@ -64,37 +77,6 @@ function render_question1(question_idTextarea, answer_idTextarea) {
 </div>`);
 }
 
-
-function add0() {
-    data.push({
-        type: 0,
-        title_id: title_idTextarea,
-        title: '',
-        description_id: description_idTextarea,
-        description: '',
-    })
-    console.log(data)
-    render_question0(title_idTextarea, description_idTextarea)
-    title_idTextarea++
-    description_idTextarea++
-
-}
-
-function add1() {
-    data.push({
-        type: 1,
-        question_id: question_idTextarea,
-        question: '',
-        answer_id: answer_idTextarea,
-        answer: '',
-    })
-    console.log(data)
-    render_question1(question_idTextarea, answer_idTextarea)
-    question_idTextarea++
-    answer_idTextarea++
-
-}
-
-document.getElementById('btn-add0').addEventListener('click', add0);
-document.getElementById('btn-add1').addEventListener('click', add1);
+document.getElementById('btn-add0').addEventListener('click', myFunction);
+document.getElementById('btn-add1').addEventListener('click', myFunction);
 
