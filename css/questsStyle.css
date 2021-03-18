@@ -1,0 +1,63 @@
+.type1, .type2 {
+    width: 880px;
+    margin-top: 30px;
+    border: 1px solid #000;
+    background: #fff;
+}
+
+.type1 .row100 .inputBx100 textarea, .type2 .row100 .inputBx100 textarea {
+    position: relative;
+    border: none;
+    border-bottom: 1px solid #000;
+    color: #000;
+    background: transparent;
+    width: 100%;
+    padding-top: 5px 0;
+    outline: none;
+    font-weight: 300;
+    margin: 20px 0;
+    resize: none;
+}
+
+.type1 form, .type2 form {
+    width: 100%;
+}
+
+.type1 .row100, .type2 .row100 {
+    display: flex;
+    width: 100%;
+}
+
+.type1 .row100 .inputBx50, .type2 .row100 .inputBx50 {
+    width: 50%;
+    margin: 0 20px;
+}
+
+.type1 .row100 .inputBx100, .type2 .row100 .inputBx100 {
+    width: 100%;
+    margin: 0 20px;
+}
+
+.btn {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 30%;
+}
+
+/* Darker background on mouse-over */
+
+.btn:hover {
+    background-color: RoyalBlue;
+}
+
+.title_textarea {
+    font-size: 18px;
+}
+
+.description_textarea {
+    font-size: 15px;
+}

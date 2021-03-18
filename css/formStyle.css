@@ -1,0 +1,246 @@
+aside {
+    float: right;
+    margin-top: 100px;
+    background: #fff;
+
+}
+.container{
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 50px;
+    flex-direction: row;
+    
+}
+.sec {
+    padding: 100px;
+    /* min-height: 100vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    flex-direction: column;
+}
+
+.sec .content {
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+
+.mxw880p {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h3 {
+    font-size: 40px;
+    font-weight: 200;
+    margin-bottom: 10px;
+}
+
+p {
+    position: relative;
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+
+.contact {
+    background: rgb(151, 19, 19);
+}
+
+.contact h3, .contact p {
+    color: #fff;
+}
+
+.contactForm {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.contactForm form {
+    width: 100%;
+}
+
+.contactForm .row100 {
+    display: flex;
+    width: 100%;
+}
+
+.contactForm .row100 .inputBx50 {
+    width: 50%;
+    margin: 0 20px;
+}
+
+.contactForm .row100 .inputBx100 {
+    width: 100%;
+    margin: 0 20px;
+}
+
+.contactForm .row100 input, .contactForm .row100 textarea {
+    position: relative;
+    border: none;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    background: transparent;
+    width: 100%;
+    padding-top: 10px 0;
+    outline: none;
+    font-size: 18px;
+    font-weight: 300;
+    margin: 20px 0;
+    resize: none;
+}
+
+.contactForm .row100 textarea {
+    height: 100px;
+}
+
+.contactForm .row100 input::placeholder, .contactForm .row100 textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.contactForm .row100 input[type="submit"] {
+    background: #fff;
+    color: #000;
+    max-width: 200px;
+    margin: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    font-weight: 500;
+}
+.sci {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0;
+}
+
+.sci ul {
+    display: flex;
+}
+
+.sci ul li {
+    list-style: none;
+}
+
+.sci ul li a {
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 30px;
+}
+
+.sci ul li a img {
+    filter: invert(1);
+    max-width: 40px;
+}
+
+.sci ul li a:hover img {
+    opacity: 0.5;
+}
+.toggle {
+    display: none;
+}
+
+@media (max-width: 992px) {
+    .toggle {
+        display: block;
+        position: relative;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+    .toggle:before {
+        content: '';
+        position: absolute;
+        top: 4px;
+        width: 100%;
+        height: 2px;
+        background: #000;
+        z-index: 1;
+        box-shadow: 0 10px 0 #000;
+        transition: 0.5s;
+    }
+    .toggle:after {
+        content: '';
+        position: absolute;
+        bottom: 4px;
+        width: 100%;
+        height: 2px;
+        background: #000;
+        z-index: 1;
+        transition: 0.5s;
+    }
+    header, header.sticky {
+        padding: 5px 50px;
+        background: #fff;
+    }
+    header ul {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        text-align: center;
+        overflow: auto;
+        background: #fff;
+        visibility: hidden;
+        opacity: 0;
+    }
+    header.active ul {
+        visibility: visible;
+        opacity: 1;
+        display: block;
+        padding-top: 20px;
+    }
+    header.active ul li a {
+        display: inline-block;
+        margin: 10px 0;
+        font-size: 20px;
+    }
+    header .logo, header ul li a {
+        color: #000;
+    }
+    .banner {
+        background-position: center;
+    }
+    .banner h2 {
+        font-size: 60px;
+        padding: 0 5px;
+    }
+    .sec {
+        padding: 100px 50px 50px 50px;
+    }
+    .services .box {
+        width: 100%;
+    }
+    .stats {
+        padding-top: 250px;
+    }
+    .row100 {
+        flex-direction: column;
+    }
+    .contactForm .row100 .inputBx100, .contactForm .row100 .inputBx50 {
+        width: 100%;
+        margin: 0;
+    }
+    .sci {
+        margin: 20px;
+    }
+    .sci ul li a img {
+        font-size: 24px;
+    }
+    h3 {
+        font-size: 36px;
+    }
+
+}
