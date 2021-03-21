@@ -2,10 +2,20 @@
 <html lang="en">
 
 <head>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="../Js/sss.js"></script>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="../css/homeStyle.css" />
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/homeStyle.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -36,15 +46,37 @@
 </head>
 
 <body>
-    <!-- Header -->
-    <header id="header">
-        
-    </header>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="inner-width">
+            <a href="/" class="logo"></a>
+            <button class="menu-toggler">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="navbar-menu">
+                <input type="text" placeholder="Search..">
+                <button type="submit"><i class="fa fa-search"></i></button>
+                <a href="index.html">Trang chủ</a>
+                <a href="form.html">Tạo phiếu</a>
+                <a href="#services">Thống kê</a>
+                <a href="#education">Kết xuất</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home">
+
+    </section>
+
+
+
 
     <section class="sec work" id="portfolio">
         <div class="content">
             <div class="mxw880p">
-                <h3>Phiếu khảo sát</h3>
+                <h3 class="section-title">Phiếu khảo sát</h3>
                 <!-- <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id tincidunt urna. Donec vel sagittis
                     magna, ac facilisis urna. Integer auctor neque vitae erat pretium, eget lacinia nunc ullamcorper.
@@ -73,8 +105,8 @@
     </script>
     <script type="text/javascript" src="../Js/script.js"></script>
     <script src="../Js/homeFirebase.js"></script>
-    
-    
+
+
 </body>
 
 </html>
