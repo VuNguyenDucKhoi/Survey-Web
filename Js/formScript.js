@@ -1,7 +1,12 @@
 var data = []
 var title_idTextarea = 0, description_idTextarea = 0
 var question_idTextarea = 0, answer_idTextarea = 0
-
+var question_amount = {
+    type0: 1,
+    type1: 0,
+    type2: 0,
+    type3: 0,
+}
 //#region Khởi đầu
 render_question0(title_idTextarea, description_idTextarea)
 data.push({
@@ -10,7 +15,8 @@ data.push({
     title: '',
     description_id: description_idTextarea++,
     description: '',
-})
+})    
+
 // data.push({
 //     type: 1,
 //     question_id: question_idTextarea,
@@ -33,21 +39,22 @@ data.push({
 //     answer: '',
 // })
 
+console.log("question_amount", "=>", question_amount)
 //#endregion
 
 //#region test
-function myFunction(){
-    for (var key in data){
-        switch(data[key].type){
-            case 0:
-                render_question0(data[key].title_idTextarea, data[key].description_idTextarea)
-                break
-            case 1:
-                render_question1(data[key].question_idTextarea, data[key].answer_idTextarea)
-                break
-        }
-    }
-}
+// function myFunction(){
+//     for (var key in data){
+//         switch(data[key].type){
+//             case 0:
+//                 render_question0(data[key].title_idTextarea, data[key].description_idTextarea)
+//                 break
+//             case 1:
+//                 render_question1(data[key].question_idTextarea, data[key].answer_idTextarea)
+//                 break
+//         }
+//     }
+// }
 
 function render_question0(title_idTextarea, description_idTextarea) {
     var html = document.getElementById("question");
@@ -95,6 +102,8 @@ function add0() {
         description_id: description_idTextarea,
         description: '',
     })
+    question_amount.type0++;
+    console.log("question_amount", "=>", question_amount)
     console.log(data)
     render_question0(title_idTextarea, description_idTextarea)
     title_idTextarea++
@@ -108,8 +117,10 @@ function add1() {
         question_id: question_idTextarea,
         question: '',
         answer_id: answer_idTextarea,
-        answer: '',
+        answer: [],
     })
+    question_amount.type1++;
+    console.log("question_amount", "=>", question_amount)
     console.log(data)
     render_question1(question_idTextarea, answer_idTextarea)
     question_idTextarea++

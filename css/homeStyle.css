@@ -189,12 +189,12 @@ p {
     margin: 0 20px;
 }
 
-.contactForm .row100 .inputBx100 {
+.contactForm .row100 .inputBx100{
     width: 100%;
     margin: 0 20px;
 }
 
-.contactForm .row100 input, .contactForm .row100 textarea {
+.contactForm .row100 input, .contactForm .row100 textarea, .row100 input, .row100 textarea {
     position: relative;
     border: none;
     border-bottom: 1px solid #fff;
