@@ -43,6 +43,7 @@
 }
 
 .box{
+    position: fixed;
     margin-top: 100px;
     background-color: #FFF;
     border: 1px solid #000;
@@ -57,20 +58,26 @@
     padding: 5px;
 }
 .btn {
-
-    background-color: DodgerBlue;
+    display: inline-block;
+    color: #48dbfb;
+    font-size: 15px;
+    font-weight: 500;
+    border: 1px solid #48dbfb;
+    transition: .2s linear;
+    background-color: rgb(0, 0, 0);
     border: none;
     color: white;
     align-items: center;
     font-size: 8px;
-    cursor: pointer;
     border-radius: 50%;
 }
-
+.btn, a{
+    cursor: pointer;
+}
 /* Darker background on mouse-over */
 
 .btn:hover {
-    background-color: RoyalBlue;
+    background-color: DodgerBlue;
 }
 
 .title_textarea {

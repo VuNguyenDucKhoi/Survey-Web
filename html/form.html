@@ -4,7 +4,9 @@
 <head>
 
 
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -47,47 +49,52 @@
 
 <body>
     <!-- Navbar -->
-<nav class="navbar">
-    <div class="inner-width">
-      <a href="/" class="logo"></a>
-      <button class="menu-toggler">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <div class="navbar-menu">
-        <input type="text" placeholder="Search..">
-        <button type="submit"><i class="fa fa-search"></i></button>
-        <a href="index.html">Trang chủ</a>
-        <a href="form.html">Tạo phiếu</a>
-        <a href="#services">Thống kê</a>
-        <a href="#education">Kết xuất</a>
-      </div>
-    </div>
-  </nav>
-  <section id="home">
-    
-  </section>
-  
-    <section class="container">
-        <section class="sec fa-question">
-            <div id="question">
+    <nav class="navbar">
+        <div class="inner-width">
+            <a href="/" class="logo"></a>
+            <button class="menu-toggler">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="navbar-menu">
+                <input type="text" placeholder="Search..">
+                <button type="submit"><i class="fa fa-search"></i></button>
+                <a href="index.html">Trang chủ</a>
+                <a href="form.html">Tạo phiếu</a>
+                <a href="#services">Thống kê</a>
+                <a href="#education">Kết xuất</a>
             </div>
-        </section>
-        <aside>
-            <div class="box">
-                <div class="box-icon">
-                    <button class="btn" id="btn-add0"><span class="material-icons">add_box</span></button>
-                </div>
-                <div class="box-icon">
-                    <button class="btn" id="btn-add1"><span class="material-icons">add_box</span></button>
-                </div>
-            </div>
-        </aside>
+        </div>
+    </nav>
+    <section id="home">
 
     </section>
-    <div class="contactForm">
-        <form>
+    <form action="../loadForm.html" method="get">
+        <section class="container">
+            <!-- Name: <input type="text" name="fname"> -->
+            <section class="sec fa-question">
+
+                <div id="question">
+                </div>
+
+            </section>
+            <aside>
+                <div class="box">
+                    <div class="box-icon tooltip">
+                        <a class="btn" id="btn-add0"><span class="material-icons">add_box</span></a>
+                        <span class="tooltiptext">Tiêu đề</span>
+                    </div>
+                    <div class="box-icon tooltip">
+                        <a class="btn" id="btn-add1"><span class="material-icons">add_box</span></a>
+                        <span class="tooltiptext">Câu hỏi 1</span>
+                    </div>
+                </div>
+            </aside>
+
+        </section>
+        <div class="contactForm">
+            <!-- <form> -->
             <div class="row100">
                 <div class="inputBx100">
                     <input id="sendForm" type="submit" name="" value="Send Form">
@@ -96,30 +103,21 @@
                     <input id="sendData" type="submit" name="" value="Send Data">
                 </div>
             </div>
-        </form>
-    </div>
+            <!-- </form> -->
+        </div>
+    </form>
 
     <!-- <p id="demo">Click me.</p> -->
 
 
     <!-- Banner -->
 
-    <script type="text/javascript">
-        // window.addEventListener("scroll", function () {
-        //     var header = document.querySelector("header");
-        //     header.classList.toggle("sticky", window.scrollY > 0);
-        // })
-        // function toggle() {
-        //     var header = document.querySelector("header");
-        //     header.classList.toggle("active");
-        // }
-    </script>
     <script type="text/javascript" src="../Js/script.js"></script>
     <script src="../Js/formScript.js"></script>
     <script src="../Js/formFirebase.js"></script>
-    
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    
+
 </body>
 
 </html>

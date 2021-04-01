@@ -6,12 +6,21 @@ var loadAmount = 0 //Lấy id của form đc chọn
 var formId
 var data = []
 
+console.log("formId0", "=>", formId)
+new URLSearchParams(window.location.search).forEach((value) => {
+    formId = value
+    console.log("formId1", "=>", formId)
+
+    // const result = document.getElementById('demo')
+    // result.append(`${name} : ${value}`)
+})
 selectFormsCollection.doc("0").get()
     .then(form => {
         if (form.exists) {
             loadAmount = form.data()
             console.log("loadAmount", "=>", loadAmount.id)
-            formId = loadAmount.id
+            // // formId = loadAmount.id
+            console.log("formId2", "=>", formId)
             formsCollection.doc(uid).collection("lists").doc(formId.toString()).get()
                 .then(form => {
                     if (form.exists) {
@@ -35,33 +44,33 @@ selectFormsCollection.doc("0").get()
 
 function getData0(id) {
     selectFormsCollection.doc("0").get()
-    .then(form => {
-        if (form.exists) {
-            loadAmount = form.data()
-            formId = loadAmount.id
-            formsCollection.doc(uid).collection("lists").doc(formId.toString()).get()
-                .then(form => {
-                    if (form.exists) {
-                        loadData = form.data()
-                        data.push({
-                            type: loadData.data[id].type,
-                            title_id: loadData.data[id].title_id,
-                            title: loadData.data[id].title,
-                            description_id: loadData.data[id].description_id,
-                            description: loadData.data[id].description,
-                        })
-                        console.log("data", "=>", data)
+        .then(form => {
+            if (form.exists) {
+                loadAmount = form.data()
+                // formId = loadAmount.id
+                formsCollection.doc(uid).collection("lists").doc(formId.toString()).get()
+                    .then(form => {
+                        if (form.exists) {
+                            loadData = form.data()
+                            data.push({
+                                type: loadData.data[id].type,
+                                title_id: loadData.data[id].title_id,
+                                title: loadData.data[id].title,
+                                description_id: loadData.data[id].description_id,
+                                description: loadData.data[id].description,
+                            })
+                            console.log("data", "=>", data)
 
-                    }
-                    else
-                        console.log('form does not exist');
-                })
-                .catch(error => { console.error(error) })
-        }
-        else
-            console.log('form does not exist');
-    })
-    .catch(error => { console.error(error) })
+                        }
+                        else
+                            console.log('form does not exist');
+                    })
+                    .catch(error => { console.error(error) })
+            }
+            else
+                console.log('form does not exist');
+        })
+        .catch(error => { console.error(error) })
     // console.log("data", "=>", data)
 }
 // function setAnswers0(index, answer) {
@@ -70,34 +79,34 @@ function getData0(id) {
 // }
 function getData1(id) {
     selectFormsCollection.doc("0").get()
-    .then(form => {
-        if (form.exists) {
-            loadAmount = form.data()
-            formId = loadAmount.id
-            formsCollection.doc(uid).collection("lists").doc(formId.toString()).get()
-                .then(form => {
-                    if (form.exists) {
-                        loadData = form.data()
-                        data.push({
-                            type: loadData.data[id].type,
-                            question_id: loadData.data[id].question_id,
-                            question: loadData.data[id].question,
-                            answer_id: loadData.data[id].answer_id,
-                            answer: loadData.data[id].answer,
-                        })
+        .then(form => {
+            if (form.exists) {
+                loadAmount = form.data()
+                // formId = loadAmount.id
+                formsCollection.doc(uid).collection("lists").doc(formId.toString()).get()
+                    .then(form => {
+                        if (form.exists) {
+                            loadData = form.data()
+                            data.push({
+                                type: loadData.data[id].type,
+                                question_id: loadData.data[id].question_id,
+                                question: loadData.data[id].question,
+                                answer_id: loadData.data[id].answer_id,
+                                answer: loadData.data[id].answer,
+                            })
                             console.log("data", "=>", data)
 
-                    }
-                    else
-                        console.log('form does not exist');
-                })
-                .catch(error => { console.error(error) })
-        }
-        else
-            console.log('form does not exist');
-    })
-    .catch(error => { console.error(error) })
-    
+                        }
+                        else
+                            console.log('form does not exist');
+                    })
+                    .catch(error => { console.error(error) })
+            }
+            else
+                console.log('form does not exist');
+        })
+        .catch(error => { console.error(error) })
+
 }
 function setAnswer1(index, answer) {
     data[index].answer.push(answer)
@@ -119,37 +128,10 @@ function setAnswer1(index, answer) {
 //     console.log("value1", "=>", value)
 // }
 
-
-function setAnswers() {
-    for (var key in data) {
-        switch (data[key].type) {
-            case 0:
-
-                break
-            case 1:
-                console.log("key", "=>", key)
-                render_Answer1(key, data[key].answer_id)
-                break
-        }
-    }
-}
-
-
-async function render_Answer1(index, answer_idTextarea) {
-    // var html = document.getElementById("div1answer" + id);
-    // html.insertAdjacentHTML("beforeend", `
-    //     <script type="text/javascript">
-    //         document.getElementById("div1answer"+id).addEventListener("onload", setAnswer1(${index}, 1answer${id}.value));
-
-    //     </script>
-    // `);
-}
-
-
-
 //Load tiêu đề
 function render_title(text) {
     document.getElementById("title").innerHTML = text;
+    document.title = text;
 }
 //Load các loại câu hỏi
 function myFunction() {
@@ -163,44 +145,44 @@ function myFunction() {
         switch (loadData.data[key].type) {
             case 0:
                 getData0(key)
-                render_question0(loadData.data[key].title_id, loadData.data[key].description_id)
+                render_question0(loadData.data[key].title_id, loadData.data[key].description_id, loadData.data[key].title, loadData.data[key].description)
                 break
             case 1:
                 getData1(key)
                 // getData1(question_amount.type1++)
 
-                render_question1(loadData.data[key].question_id, loadData.data[key].answer_id)
+                render_question1(loadData.data[key].question_id, loadData.data[key].answer_id, loadData.data[key].question)
                 break
         }
     }
 }
 
 //Add các loại câu hỏi
-function render_question0(title_idTextarea, description_idTextarea) {
+function render_question0(title_idTextarea, description_idTextarea, title, description) {
     var html = document.getElementById("question");
     html.insertAdjacentHTML("beforeend", ` 
     <div class="type1">
     <form>
         <div class="row100">
             <div class="inputBx100">
-                <textarea class="title_textarea" id="title${title_idTextarea}" placeholder="Tiêu đề biểu mẫu"></textarea>
+                <textarea class="title_textarea" id="title${title_idTextarea}" placeholder="${title}" value="${title}"></textarea>
             </div>
         </div>
         <div class="row100">
             <div class="inputBx100">
-                <textarea class="description_textarea" id="description${description_idTextarea}" placeholder="Mô tả biểu mẫu"></textarea>
+                <textarea class="description_textarea" id="description${description_idTextarea}" placeholder="${description}" value="${description}"></textarea>
             </div>
         </div>
     </form>
 </div>`)
 }
-function render_question1(question_idTextarea, answer_idTextarea) {
+function render_question1(question_idTextarea, answer_idTextarea, question) {
     var html = document.getElementById("question");
     html.insertAdjacentHTML("beforeend", `<div class="type2">
     <form>
         <div class="row100">
             <div class="inputBx100">
-                <textarea id="1question${question_idTextarea}" placeholder="Câu hỏi"></textarea>
+                <textarea id="1question${question_idTextarea}" placeholder="${question}" value="${question}"></textarea>
             </div>
         </div>
         <div class="row100">
@@ -218,13 +200,18 @@ sendData.addEventListener('click', e => {
         .then(form => {
             if (form.exists) {
                 loadAmount = form.data()
-                formId = loadAmount.id
+                // formId = loadAmount.id
                 formsCollection.doc(uid).collection("lists").doc(formId.toString()).get()
                     .then(form => {
                         if (form.exists) {
                             loadData = form.data()
-                            var i = 0
-                            var j = 0
+                            var i = 0 //Thứ tự của từng câu hỏi
+                            var question_amount = {//Lưu id tương tự id của từng câu hỏi trên firebase
+                                type0: 0,
+                                type1: 0,
+                                type2: 0,
+                                type3: 0,
+                            }
                             while (i < loadData.data.length) {
                                 // console.log("i", "=>", i)
                                 // console.log("loadData.Data.length", "=>", loadData.data.length)
@@ -233,18 +220,23 @@ sendData.addEventListener('click', e => {
                                     case 0:
                                         break
                                     case 1:
-                                        c = document.getElementById("div1answer"+j).children;
+                                        c = document.getElementById("div1answer" + question_amount.type1).children;
                                         console.log("c[0]", "=>", c[0].value)
                                         setAnswer1(i, c[0].value)
-                                        j++
+                                        question_amount.type1++
                                         break
                                 }
                                 i++;
                                 console.log("data-answer", "=>", data)
                             }
+                            console.log("formId3", "=>", formId)
                             formsCollection.doc(uid).collection("lists").doc(formId.toString()).update({
-                                data : data,
+                                data: data,
                             })
+                                .then(() => { 
+                                    alert("Cảm ơn bạn vì đã thực hiện khảo sát!!")
+                            })
+                                .catch(error => { console.error(error) });
                         }
                         else
                             console.log('form does not exist');
@@ -258,6 +250,6 @@ sendData.addEventListener('click', e => {
     // setAnswers()
     // setAnswer1(1, "hello")
     // document.getElementById("demo").innerHTML = sum;
-    
+
 })
 
