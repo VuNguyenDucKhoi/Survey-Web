@@ -357,7 +357,7 @@ sendForm.addEventListener('click', e => {
                 formId = loadAmount.id
                 formsCollection.doc(uid).collection("lists").doc(formId).update({
                     data: data,
-                    link: window.location.href.replace("/html/EditForm.html", "/loadForm.html?fname=" + formId),
+                    link: window.location.href.replace("/EditForm.html", "/loadForm.html?fname=" + formId),
                     question_amount: question_amount,
                 })
                 console.log('Data Successfully Written');
