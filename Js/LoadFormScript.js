@@ -165,12 +165,12 @@ function render_question0(title_idTextarea, description_idTextarea, title, descr
     <form>
         <div class="row100">
             <div class="inputBx100">
-                <textarea class="title_textarea" id="title${title_idTextarea}" placeholder="${title}" value="${title}"></textarea>
+                <textarea class="title_textarea" id="title${title_idTextarea}" placeholder="${title}" value="${title}"  onkeypress="auto_grow(this);" onkeyup="auto_grow(this);"></textarea>
             </div>
         </div>
         <div class="row100">
             <div class="inputBx100">
-                <textarea class="description_textarea" id="description${description_idTextarea}" placeholder="${description}" value="${description}"></textarea>
+                <textarea class="description_textarea" id="description${description_idTextarea}" placeholder="${description}" value="${description}" onkeypress="auto_grow(this);" onkeyup="auto_grow(this);"></textarea>
             </div>
         </div>
     </form>
@@ -182,12 +182,12 @@ function render_question1(question_idTextarea, answer_idTextarea, question) {
     <form>
         <div class="row100">
             <div class="inputBx100">
-                <textarea id="1question${question_idTextarea}" placeholder="${question}" value="${question}"></textarea>
+                <textarea class="title_textarea" id="1question${question_idTextarea}" placeholder="${question}" value="${question}" onkeypress="auto_grow(this);" onkeyup="auto_grow(this);"></textarea>
             </div>
         </div>
         <div class="row100">
             <div class="inputBx100" id="div1answer${answer_idTextarea}">
-                <textarea id="1answer${answer_idTextarea}" placeholder="Văn bản trả lời"></textarea>
+                <textarea class="description_textarea" id="1answer${answer_idTextarea}" placeholder="Văn bản trả lời" onkeypress="auto_grow(this);" onkeyup="auto_grow(this);"></textarea>
             </div>
         </div>
     </form>

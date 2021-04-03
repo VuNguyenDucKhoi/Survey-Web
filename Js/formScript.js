@@ -14,7 +14,7 @@ data.push({
     title: '',
     description_id: question_amount.type0++,
     description: '',
-})    
+})
 
 // data.push({
 //     type: 1,
@@ -51,23 +51,29 @@ function afterDelete() {
             case 1:
                 render_question1(data[key].question_id, data[key].answer_id, data[key].question)
                 break
+            case 2:
+                render_question2(data[key].question_id, data[key].answer_id, data[key].question)
+                break
+            case 3:
+                render_question1(data[key].question_id, data[key].answer_id, data[key].question)
+                break
         }
     }
 }
 function render_question0(type0, type0) {
     var html = document.getElementById("question");
-    html.insertAdjacentHTML("beforeend",` 
+    html.insertAdjacentHTML("beforeend", ` 
 
     <div class="type1" id="type1${type0}">
 
         <div class="row100">
             <div class="inputBx100" id="div1Question${type0}">
-                <textarea class="title_textarea" id="title${type0}" placeholder="Tiêu đề biểu mẫu"></textarea>
+                <textarea class="title_textarea" id="title${type0}" placeholder="Tiêu đề biểu mẫu"  onkeypress="auto_grow(this);" onkeyup="auto_grow(this);"></textarea>
             </div>
         </div>
         <div class="row100">
             <div class="inputBx100" id="div1Description${type0}">
-                <textarea class="description_textarea" id="description${type0}" placeholder="Mô tả biểu mẫu"></textarea>
+                <textarea class="description_textarea" id="description${type0}" placeholder="Mô tả biểu mẫu"  onkeypress="auto_grow(this);" onkeyup="auto_grow(this);"></textarea>
             </div>
         </div>
         <a onclick="delete_question0(${type0})"><span class="material-icons">delete</span></a>
@@ -82,12 +88,12 @@ function render_question1(type1, type1) {
 
         <div class="row100">
             <div class="inputBx100" id="div1answer${type1}">
-                <textarea id="1question${type1}" placeholder="Câu hỏi"></textarea>
+                <textarea class="title_textarea" id="1question${type1}" placeholder="Câu hỏi"  onkeypress="auto_grow(this);" onkeyup="auto_grow(this);"></textarea>
             </div>
         </div>
         <div class="row100">
             <div class="inputBx100">
-                <textarea disabled = true id="1answer${type1}" placeholder="Văn bản trả lời"></textarea>
+                <textarea class="description_textarea" disabled = true id="1answer${type1}" placeholder="Văn bản trả lời"  onkeypress="auto_grow(this);" onkeyup="auto_grow(this);"></textarea>
             </div>
         </div>
         <a onclick="delete_question1(${type1})"><span class="material-icons">delete</span></a>
@@ -95,6 +101,44 @@ function render_question1(type1, type1) {
 </div>`);
 }
 
+function render_question2(type2, type2) {
+    var html = document.getElementById("question");
+    html.insertAdjacentHTML("beforeend", `
+    <div class="type3" id="type2${type2}">
+        <div class="row100">
+            <div class="inputBx100" id="div2Question${type2}">
+                <textarea class="title_textarea" id="2question${type2}" 
+                    onkeypress="auto_grow(this);" onkeyup="auto_grow(this);"
+                    placeholder="Tiêu đề biểu mẫu"></textarea>
+            </div>
+            <ul class="rating" id="2answer${type2}">
+                <li class="rating-item" data-rate="1"></li>
+                <li class="rating-item" data-rate="2"></li>
+                <li class="rating-item" data-rate="3"></li>
+                <li class="rating-item" data-rate="4"></li>
+                <li class="rating-item active" data-rate="5"></li>
+            </ul>
+        </div>
+        <a onclick="delete_question1(${type2})"><span class="material-icons">delete</span></a>
+        <script type="text/javascript">
+            getRating(${type2})
+        </script>
+    </div>
+`);
+}
+function getRating(id){
+    const container = document.querySelector('#'+id);
+        const items = container.querySelectorAll('.rating-item');
+
+        container.onclick = e => {
+            const elClass = e.target.classList;
+            if (!elClass.contains('active')) {
+                items.forEach(item => item.classList.remove('active'))
+                console.log(e.target.getAttribute("data-rate"))
+                elClass.add('active')
+            }
+        }
+}
 // lấy câu hỏi trên textarea vào data
 function setQuestion00(index, question) {
     data[index].title = question
@@ -138,6 +182,19 @@ function add1() {
     console.log("question_amount", "=>", question_amount)
     console.log(data)
 }
+function add2() {
+    data.push({
+        type: 2,
+        question_id: question_amount.type2,
+        question: '',
+        answer_id: question_amount.type2,
+        answer: [],
+    })
+    render_question2(question_amount.type2, question_amount.type2)
+    question_amount.type2++;
+    console.log("question_amount", "=>", question_amount)
+    console.log(data)
+}
 // Xoá câu hỏi
 function delete_question0(id_question) {
     var a = -1
@@ -175,7 +232,28 @@ function delete_question1(id_question) {
         afterDelete()
     }
 }
+function delete_question2(id_question) {
+    var a = -1
+    for (var i = 0; i < data.length; i++) {
+        if (data[i].question_id == id_question) {
+            a = i;
+            break;
+        }
+    }
+    var myQuestion = document.getElementById("type2" + id_question.toString());
+    if (a != -1) {
+        myQuestion.remove()
+        data.splice(a, 1);
+        question_amount.type1--
+        console.log("data1", "=>", data);
+        afterDelete()
+    }
+}
+
 document.getElementById('btn-add0').addEventListener('click', add0);
 document.getElementById('btn-add1').addEventListener('click', add1);
+document.getElementById('btn-add2').addEventListener('click', add2);
 
+
+// document.getElementById('btn-add3').addEventListener('click', add3);
 // console.log("data", "=>", data);

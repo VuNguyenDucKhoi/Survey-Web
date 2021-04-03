@@ -180,12 +180,12 @@ function render_question0(title_idTextarea, description_idTextarea, title, descr
 
         <div class="row100">
             <div class="inputBx100" id="div1Question${title_idTextarea}">
-                <textarea class="title_textarea" id="title${title_idTextarea}"  placeholder="${title}" value="${title}"></textarea>
+                <textarea class="title_textarea" id="title${title_idTextarea}"  placeholder="${title}" value="${title}"  onkeypress="auto_grow(this);" onkeyup="auto_grow(this);"></textarea>
             </div>
         </div>
         <div class="row100">
             <div class="inputBx100" id="div1Description${description_idTextarea}">
-                <textarea class="description_textarea" id="description${description_idTextarea}" placeholder="${description}" value="${description}"></textarea>
+                <textarea class="description_textarea" id="description${description_idTextarea}" placeholder="${description}" value="${description}"  onkeypress="auto_grow(this);" onkeyup="auto_grow(this);"></textarea>
             </div>
         </div>
         <a onclick="delete_question0(${title_idTextarea})"><span class="material-icons">delete</span></a>
@@ -200,12 +200,12 @@ function render_question1(question_idTextarea, answer_idTextarea, question) {
 
         <div class="row100">
             <div class="inputBx100" id="div1answer${answer_idTextarea}">
-                <textarea id="1question${question_idTextarea}" placeholder="${question}" value="${question}"></textarea>
+                <textarea class="title_textarea" id="1question${question_idTextarea}" placeholder="${question}" value="${question}"  onkeypress="auto_grow(this);" onkeyup="auto_grow(this);"></textarea>
             </div>
         </div>
         <div class="row100">
             <div class="inputBx100">
-                <textarea disabled = true id="1answer${answer_idTextarea}" placeholder="Văn bản trả lời"></textarea>
+                <textarea class="description_textarea" disabled = true id="1answer${answer_idTextarea}" placeholder="Văn bản trả lời"  onkeypress="auto_grow(this);" onkeyup="auto_grow(this);"></textarea>
             </div>
         </div>
         <a onclick="delete_question1(${question_idTextarea})"><span class="material-icons">delete</span></a>
@@ -291,7 +291,23 @@ function delete_question1(id_question) {
         afterDelete()
     }
 }
-
+function delete_question2(id_question) {
+    var a = -1
+    for (var i = 0; i < data.length; i++) {
+        if (data[i].question_id == id_question) {
+            a = i;
+            break;
+        }
+    }
+    var myQuestion = document.getElementById("type3" + id_question.toString());
+    if (a != -1) {
+        myQuestion.remove()
+        data.splice(a, 1);
+        question_amount.type2--
+        console.log("data2", "=>", data);
+        afterDelete()
+    }
+}
 
 document.getElementById('btn-add0').addEventListener('click', add0);
 document.getElementById('btn-add1').addEventListener('click', add1);
