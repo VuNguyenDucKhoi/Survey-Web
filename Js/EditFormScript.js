@@ -375,6 +375,24 @@ getLink.addEventListener("click", e => {
     const el = document.createElement('textarea');
     // var url = window.location.href.replace("/html/EditForm.html", "/loadForm.html?fname=" + formId)
     var url = window.location.href.replace("/EditForm.html", "/loadForm.html?fname=" + formId)
+    selectFormsCollection.doc("0").get()
+    .then(form => {
+        if (form.exists) {
+            loadAmount = form.data()
+            formId = loadAmount.id
+            formsCollection.doc(uid).collection("lists").doc(formId).update({
+                data: data,
+                link: url,
+                question_amount: question_amount,
+            })
+            console.log('Data Successfully Written');
+            alert("Lưu thành công!")
+            // document.location = 'index.html'; 
+        }
+        else
+            console.log('form does not exist');
+    })
+    .catch(error => { console.error(error) })
     el.value = url;
     document.body.appendChild(el);
     el.select();
