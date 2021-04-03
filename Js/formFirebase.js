@@ -32,6 +32,12 @@ sendForm.addEventListener('click', e => {
                 setQuestion1(i, c[0].value)
                 question_amount.type1++
                 break
+            case 2:
+                c = document.getElementById("div2Question" + question_amount.type2).children;
+                console.log("c[0]", "=>", c[0].value)
+                setQuestion1(i, c[0].value)
+                question_amount.type2++
+                break
         }
         i++;
         console.log("data-answer", "=>", data)

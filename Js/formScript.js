@@ -101,44 +101,23 @@ function render_question1(type1, type1) {
 </div>`);
 }
 
-function render_question2(type2, type2) {
+function render_question2(type2) {
     var html = document.getElementById("question");
     html.insertAdjacentHTML("beforeend", `
     <div class="type3" id="type2${type2}">
         <div class="row100">
             <div class="inputBx100" id="div2Question${type2}">
-                <textarea class="title_textarea" id="2question${type2}" 
-                    onkeypress="auto_grow(this);" onkeyup="auto_grow(this);"
-                    placeholder="Tiêu đề biểu mẫu"></textarea>
+                <textarea class="title_textarea" id="2question0" onkeypress="auto_grow(this);"
+                    onkeyup="auto_grow(this);" placeholder="Tiêu đề biểu mẫu"></textarea>
             </div>
-            <ul class="rating" id="2answer${type2}">
-                <li class="rating-item" data-rate="1"></li>
-                <li class="rating-item" data-rate="2"></li>
-                <li class="rating-item" data-rate="3"></li>
-                <li class="rating-item" data-rate="4"></li>
-                <li class="rating-item active" data-rate="5"></li>
-            </ul>
+            <div id="star_rating${type2}">
+            </div>
         </div>
-        <a onclick="delete_question1(${type2})"><span class="material-icons">delete</span></a>
-        <script type="text/javascript">
-            getRating(${type2})
-        </script>
+        <a onclick="delete_question2(${type2})"><span class="material-icons">delete</span></a>
     </div>
 `);
 }
-function getRating(id){
-    const container = document.querySelector('#'+id);
-        const items = container.querySelectorAll('.rating-item');
 
-        container.onclick = e => {
-            const elClass = e.target.classList;
-            if (!elClass.contains('active')) {
-                items.forEach(item => item.classList.remove('active'))
-                console.log(e.target.getAttribute("data-rate"))
-                elClass.add('active')
-            }
-        }
-}
 // lấy câu hỏi trên textarea vào data
 function setQuestion00(index, question) {
     data[index].title = question
@@ -151,6 +130,10 @@ function setQuestion01(index, question) {
 
 }
 function setQuestion1(index, answer) {
+    data[index].question = answer
+    console.log("answer", "=>", answer)
+}
+function setQuestion2(index, answer) {
     data[index].question = answer
     console.log("answer", "=>", answer)
 }
@@ -190,7 +173,20 @@ function add2() {
         answer_id: question_amount.type2,
         answer: [],
     })
-    render_question2(question_amount.type2, question_amount.type2)
+    render_question2(question_amount.type2)
+    $(function () {
+        var rating = new starRating({ // create first star rating system on page load
+            containerId: 'star_rating' +  (question_amount.type2-1).toString(), // element id in the dom for this star rating system to use
+            starWidth: 30, // width of stars
+            starHeight: 30, // height of stars
+            ratingPercent: '50%', // percentage star system should start 
+            canRate: true, // can the user rate this star system?
+            onRate: function () { // this function runs when a star is clicked on
+                console.log(rating);
+                // alert('You rated ' + rating.newRating + ' starts');
+            }
+        });
+    });
     question_amount.type2++;
     console.log("question_amount", "=>", question_amount)
     console.log(data)
@@ -244,7 +240,7 @@ function delete_question2(id_question) {
     if (a != -1) {
         myQuestion.remove()
         data.splice(a, 1);
-        question_amount.type1--
+        question_amount.type2--
         console.log("data1", "=>", data);
         afterDelete()
     }
@@ -254,6 +250,7 @@ document.getElementById('btn-add0').addEventListener('click', add0);
 document.getElementById('btn-add1').addEventListener('click', add1);
 document.getElementById('btn-add2').addEventListener('click', add2);
 
+// create object
 
 // document.getElementById('btn-add3').addEventListener('click', add3);
 // console.log("data", "=>", data);

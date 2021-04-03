@@ -106,6 +106,37 @@ function getData1(id) {
         .catch(error => { console.error(error) })
 
 }
+function getData2(id) {
+    selectFormsCollection.doc("0").get()
+        .then(form => {
+            if (form.exists) {
+                loadAmount = form.data()
+                formId = loadAmount.id
+                formsCollection.doc(uid).collection("lists").doc(formId).get()
+                    .then(form => {
+                        if (form.exists) {
+                            loadData = form.data()
+                            data.push({
+                                type: loadData.data[id].type,
+                                question_id: loadData.data[id].question_id,
+                                question: loadData.data[id].question,
+                                answer_id: loadData.data[id].answer_id,
+                                answer: loadData.data[id].answer,
+                            })
+                            console.log("data", "=>", data)
+                            question_amount.type2++
+                        }
+                        else
+                            console.log('form does not exist');
+                    })
+                    .catch(error => { console.error(error) })
+            }
+            else
+                console.log('form does not exist');
+        })
+        .catch(error => { console.error(error) })
+
+}
 function setAnswer1(index, answer) {
     data[index].answer.push(answer)
     console.log("answer", "=>", answer)
@@ -151,6 +182,12 @@ function myFunction() {
 
                 render_question1(loadData.data[key].question_id, loadData.data[key].answer_id, loadData.data[key].question)
                 break
+            case 2:
+                getData2(key)
+                // getData1(question_amount.type1++)
+
+                render_question2(loadData.data[key].question_id, loadData.data[key].answer_id, loadData.data[key].question)
+                break
         }
     }
 }
@@ -167,6 +204,9 @@ function afterDelete() {
             case 1:
                 render_question1(data[key].question_id, data[key].answer_id, data[key].question)
                 break
+            case 2:
+                render_question2(loadData.data[key].question_id, loadData.data[key].answer_id, loadData.data[key].question)
+                break;
         }
     }
 }
@@ -211,6 +251,22 @@ function render_question1(question_idTextarea, answer_idTextarea, question) {
         <a onclick="delete_question1(${question_idTextarea})"><span class="material-icons">delete</span></a>
 
 </div>`);
+}
+function render_question2(type2, type2, question) {
+    var html = document.getElementById("question");
+    html.insertAdjacentHTML("beforeend", `
+    <div class="type3" id="type2${type2}">
+        <div class="row100">
+            <div class="inputBx100" id="div2Question${type2}">
+                <textarea class="title_textarea" id="2question0" onkeypress="auto_grow(this);"
+                    onkeyup="auto_grow(this);" placeholder="${question}" value="${question}"></textarea>
+            </div>
+            <div id="star_rating${type2}">
+            </div>
+        </div>
+        <a onclick="delete_question2(${type2})"><span class="material-icons">delete</span></a>
+    </div>
+`);
 }
 function setQuestion00(index, question) {
     data[index].title = question
