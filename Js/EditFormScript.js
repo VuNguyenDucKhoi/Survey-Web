@@ -386,7 +386,6 @@ getLink.addEventListener("click", e => {
                 question_amount: question_amount,
             })
             console.log('Data Successfully Written');
-            alert("Lưu thành công!")
             // document.location = 'index.html'; 
         }
         else
