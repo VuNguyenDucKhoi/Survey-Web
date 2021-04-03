@@ -357,7 +357,7 @@ sendForm.addEventListener('click', e => {
                 formId = loadAmount.id
                 formsCollection.doc(uid).collection("lists").doc(formId).update({
                     data: data,
-                    link: window.location.href.replace("/EditForm.html", "/loadForm.html?fname=" + formId),
+                    link: window.location.href.replace("editform", "loadform?fname=" + formId),
                     question_amount: question_amount,
                 })
                 console.log('Data Successfully Written');
@@ -374,7 +374,7 @@ getLink.addEventListener("click", e => {
     e.preventDefault();
     const el = document.createElement('textarea');
     // var url = window.location.href.replace("/html/EditForm.html", "/loadForm.html?fname=" + formId)
-    var url = window.location.href.replace("/EditForm.html", "/loadForm.html?fname=" + formId)
+    var url = window.location.href.replace("editform", "loadform?fname=" + formId)
     selectFormsCollection.doc("0").get()
     .then(form => {
         if (form.exists) {
