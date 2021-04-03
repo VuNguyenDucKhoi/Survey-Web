@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="../Js/sss.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="../css/formStyle.css" />
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/questsStyle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-analytics.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyD8p0h4rG5NxTIc9wVD_NU7QEF3JqBoFQg",
+            authDomain: "survey-app-d31b4.firebaseapp.com",
+            projectId: "survey-app-d31b4",
+            storageBucket: "survey-app-d31b4.appspot.com",
+            messagingSenderId: "183910070932",
+            appId: "1:183910070932:web:c9884345d85abcd2f05281",
+            measurementId: "G-4BVW92S30E"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+    <title>Khảo sát</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="inner-width">
+            <a href="/" class="logo"></a>
+            <button class="menu-toggler">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="navbar-menu">
+                <input type="text" placeholder="Search..">
+                <button type="submit"><span class="material-icons">search</span></button>
+                <a href="index.html">Trang chủ</a>
+                <a href="form.html">Tạo phiếu</a>
+                <a href="#services">Thống kê</a>
+                <a href="#education">Kết xuất</a>
+            </div>
+        </div>
+    </nav>
+    <section id="home">
+
+    </section>
+    <form action="../loadForm.html" method="get">
+        <section class="container">
+            <!-- Name: <input type="text" name="fname"> -->
+            <section class="sec fa-question">
+
+                <div id="question">
+                </div>
+
+            </section>
+            <aside>
+                <div class="box">
+                    <div class="box-icon tooltip">
+                        <a class="btn" id="btn-add0"><span class="material-icons">title</span></a>
+                        <span class="tooltiptext">Thêm tiêu đề</span>
+                    </div>
+                    <div class="box-icon tooltip">
+                        <a class="btn" id="btn-add1"><span class="material-icons">question_answer</span></a>
+                        <span class="tooltiptext">Thêm câu hỏi và trả lời</span>
+                    </div>
+                    <div class="box-icon tooltip">
+                        <a class="btn" id="btn-add2"><span class="material-icons">star</span></a>
+                        <span class="tooltiptext">Thêm đánh giá</span>
+                    </div>
+                    <div class="box-icon tooltip">
+                        <a class="btn" id="btn-add3"><span class="material-icons">rule</span></a>
+                        <span class="tooltiptext">Thêm Yes/No</span>
+                    </div>
+                </div>
+            </aside>
+
+        </section>
+        <div class="contactForm">
+            <!-- <form> -->
+            <div class="row100">
+                <div class="inputBx100">
+                    <input id="sendForm" type="submit" name="" value="Send Form">
+                </div>
+                <div class="inputBx100">
+                    <input id="sendData" type="submit" name="" value="Send Data">
+                </div>
+            </div>
+            <!-- </form> -->
+        </div>
+    </form>
+
+    <!-- <p id="demo">Click me.</p> -->
+
+
+    <!-- Banner -->
+
+    <script type="text/javascript" src="../Js/script.js"></script>
+    <script src="../Js/formScript.js"></script>
+    <script src="../Js/formFirebase.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+
+</body>
+
+</html>

@@ -373,7 +373,8 @@ sendForm.addEventListener('click', e => {
 getLink.addEventListener("click", e => {
     e.preventDefault();
     const el = document.createElement('textarea');
-    var url = window.location.href.replace("/html/EditForm.html", "/loadForm.html?fname=" + formId)
+    // var url = window.location.href.replace("/html/EditForm.html", "/loadForm.html?fname=" + formId)
+    var url = window.location.href.replace("EditForm.html", "/loadForm.html?fname=" + formId)
     el.value = url;
     document.body.appendChild(el);
     el.select();

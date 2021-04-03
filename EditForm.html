@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="../css/formStyle.css" />
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/questsStyle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyD8p0h4rG5NxTIc9wVD_NU7QEF3JqBoFQg",
+            authDomain: "survey-app-d31b4.firebaseapp.com",
+            projectId: "survey-app-d31b4",
+            storageBucket: "survey-app-d31b4.appspot.com",
+            messagingSenderId: "183910070932",
+            appId: "1:183910070932:web:c9884345d85abcd2f05281",
+            measurementId: "G-4BVW92S30E"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+    <title>Khảo sát</title>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+    </header>
+    <h1 id="title" style="text-align:center; padding-top:30px"></h1>
+    <section class="container">
+        
+        <section class="sec fa-question">
+            <div id="question">
+            </div>
+        </section>
+        <aside>
+            <div class="box">
+                <div class="box-icon">
+                    <button class="btn" id="btn-add0"><span class="material-icons">add_box</span></button>
+                </div>
+                <div class="box-icon">
+                    <button class="btn" id="btn-add1"><span class="material-icons">add_box</span></button>
+                </div>
+            </div>
+        </aside>
+
+    </section>
+    <div class="contactForm">
+        <form>
+            <div class="row100">
+                <div class="inputBx100">
+                    <input id="sendForm" type="submit" name="" value="Lưu">
+                </div>
+                <div class="inputBx100">
+                    <input id="getLink" type="submit" name="" value="Nhận liên kết">
+                </div>
+                <div class="inputBx100">
+                    <input id="printForm" type="submit" name="" value="In">
+                </div>
+            </div>
+        </form>
+    </div>
+    <p id="demo"></p>
+    <script type="text/javascript">
+        // window.addEventListener("scroll", function () {
+        //     var header = document.querySelector("header");
+        //     header.classList.toggle("sticky", window.scrollY > 0);
+        // })
+        // function toggle() {
+        //     var header = document.querySelector("header");
+        //     header.classList.toggle("active");
+        // }
+    </script>
+    <script type="text/javascript" src="../Js/script.js"></script>
+    <script type="text/javascript" src="../Js/EditFormScript.js"></script>
+    
+</body>
+
+</html>
