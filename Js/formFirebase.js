@@ -35,7 +35,7 @@ sendForm.addEventListener('click', e => {
             case 2:
                 c = document.getElementById("div2Question" + question_amount.type2).children;
                 console.log("c[0]", "=>", c[0].value)
-                setQuestion1(i, c[0].value)
+                setQuestion2(i, c[0].value)
                 question_amount.type2++
                 break
         }

@@ -41,21 +41,33 @@ data.push({
 
 //Loại lại danh sách câu hỏi sau khi xoá
 function afterDelete() {
+    var question_amount = {//Lưu id tương tự id của từng câu hỏi trên firebase
+        type0: 0,
+        type1: 0,
+        type2: 0,
+        type3: 0,
+    }
     document.getElementById("question").outerHTML = `<div id="question">
     </div>`
     for (var key in data) {
         switch (data[key].type) {
             case 0:
-                render_question0(data[key].title_id, data[key].description_id, data[key].title, data[key].description)
+                render_question0(question_amount.type0, question_amount.type0, data[key].title, data[key].description)
+                data[key].title_id = question_amount.type0; data[key].description_id = question_amount.type0
+                question_amount.type0++
                 break
             case 1:
-                render_question1(data[key].question_id, data[key].answer_id, data[key].question)
+                render_question1(question_amount.type1, question_amount.type1, data[key].question)
+                data[key].question_id = question_amount.type1; data[key].answer_id = question_amount.type1
+                question_amount.type1++
                 break
             case 2:
-                render_question2(data[key].question_id, data[key].answer_id, data[key].question)
+                render_question2(question_amount.type2)
+                data[key].question_id = question_amount.type2; data[key].star_rating_id = question_amount.type2
+                question_amount.type2++
                 break
             case 3:
-                render_question1(data[key].question_id, data[key].answer_id, data[key].question)
+                // render_question1(data[key].question_id, data[key].answer_id, data[key].question)
                 break
         }
     }
@@ -104,10 +116,10 @@ function render_question1(type1, type1) {
 function render_question2(type2) {
     var html = document.getElementById("question");
     html.insertAdjacentHTML("beforeend", `
-    <div class="type3" id="type2${type2}">
+    <div class="type3" id="type3${type2}">
         <div class="row100">
             <div class="inputBx100" id="div2Question${type2}">
-                <textarea class="title_textarea" id="2question0" onkeypress="auto_grow(this);"
+                <textarea class="title_textarea" id="2question${type2}" onkeypress="auto_grow(this);"
                     onkeyup="auto_grow(this);" placeholder="Tiêu đề biểu mẫu"></textarea>
             </div>
             <div id="star_rating${type2}">
@@ -116,6 +128,19 @@ function render_question2(type2) {
         <a onclick="delete_question2(${type2})"><span class="material-icons">delete</span></a>
     </div>
 `);
+$(function () {
+    var rating = new starRating({ // create first star rating system on page load
+        containerId: 'star_rating' +  (question_amount.type2-1).toString(), // element id in the dom for this star rating system to use
+        starWidth: 30, // width of stars
+        starHeight: 30, // height of stars
+        ratingPercent: '50%', // percentage star system should start 
+        canRate: true, // can the user rate this star system?
+        onRate: function () { // this function runs when a star is clicked on
+            console.log(rating);
+            // alert('You rated ' + rating.newRating + ' starts');
+        }
+    });
+});
 }
 
 // lấy câu hỏi trên textarea vào data
@@ -170,23 +195,10 @@ function add2() {
         type: 2,
         question_id: question_amount.type2,
         question: '',
-        answer_id: question_amount.type2,
-        answer: [],
+        star_rating_id: question_amount.type2,
+        rating: [],
     })
     render_question2(question_amount.type2)
-    $(function () {
-        var rating = new starRating({ // create first star rating system on page load
-            containerId: 'star_rating' +  (question_amount.type2-1).toString(), // element id in the dom for this star rating system to use
-            starWidth: 30, // width of stars
-            starHeight: 30, // height of stars
-            ratingPercent: '50%', // percentage star system should start 
-            canRate: true, // can the user rate this star system?
-            onRate: function () { // this function runs when a star is clicked on
-                console.log(rating);
-                // alert('You rated ' + rating.newRating + ' starts');
-            }
-        });
-    });
     question_amount.type2++;
     console.log("question_amount", "=>", question_amount)
     console.log(data)
@@ -195,7 +207,7 @@ function add2() {
 function delete_question0(id_question) {
     var a = -1
     for (var i = 0; i < data.length; i++) {
-        if (data[i].title_id == id_question) {
+        if (data[i].title_id == id_question && data[i].type == 0) {
             a = i;
             break;
         }
@@ -214,7 +226,7 @@ function delete_question0(id_question) {
 function delete_question1(id_question) {
     var a = -1
     for (var i = 0; i < data.length; i++) {
-        if (data[i].question_id == id_question) {
+        if (data[i].question_id == id_question && data[i].type == 1) {
             a = i;
             break;
         }
@@ -231,12 +243,12 @@ function delete_question1(id_question) {
 function delete_question2(id_question) {
     var a = -1
     for (var i = 0; i < data.length; i++) {
-        if (data[i].question_id == id_question) {
+        if (data[i].question_id == id_question && data[i].type == 2) {
             a = i;
             break;
         }
     }
-    var myQuestion = document.getElementById("type2" + id_question.toString());
+    var myQuestion = document.getElementById("type3" + id_question.toString());
     if (a != -1) {
         myQuestion.remove()
         data.splice(a, 1);

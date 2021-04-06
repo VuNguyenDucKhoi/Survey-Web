@@ -6,6 +6,7 @@
     border-top-width: 10px;
     border-top-color: #0b7891;
     background: #fff;
+    box-shadow: 0.5px 0.5px 3px gray;
 }
 
 .type1 .row100 .inputBx100 textarea, .type2 .row100 .inputBx100 textarea, .type3 .row100 .inputBx100 textarea, .type4 .row100 .inputBx100 textarea {
@@ -108,7 +109,45 @@
         align-items: center;
         width: 100%;
     }
-    .box {
-        /* width: 100%; */
+    .box{
+        align-items: center;
+        margin-right: 10px;   
     }
+    .type1 .row100 .inputBx100 textarea, .type2 .row100 .inputBx100 textarea, .type3 .row100 .inputBx100 textarea, .type4 .row100 .inputBx100 textarea  {
+        position: relative;
+        border: none;
+        border-bottom: 0.5px dotted  #000;
+        color: #000;
+        background: transparent;
+        width: 100%;
+        padding-top: 5px 0;
+        outline: none;
+        font-weight: 300;
+        margin: 20px 0;
+        resize: none;
+    }
+    .type1 form, .type2 form, .type3, .type4 {
+        width: 100%;
+    }
+    
+    .type1 .row100, .type2 .row100,  .type3 .row100, .type4 .row100 {
+        display: flex;
+        width: 100%;
+    }
+    
+    .type1 .row100 .inputBx50, .type2 .row100 .inputBx50, .type3 .row100 .inputBx50, .type4 .row100 .inputBx50  {
+        width: 50%;
+        margin: 0 20px;
+    }
+    
+    .type1 .row100 .inputBx100, .type2 .row100 .inputBx100, .type3 .row100 .inputBx100, .type4 .row100 .inputBx100 {
+        width: 100%;
+        margin: 0 20px;
+    }
+    .container {
+        width: 90%;
+    }
+
+
+
 }

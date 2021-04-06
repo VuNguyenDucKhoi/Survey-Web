@@ -43,76 +43,70 @@ selectFormsCollection.doc("0").get()
 
 
 function getData0(id) {
-    selectFormsCollection.doc("0").get()
-        .then(form => {
-            if (form.exists) {
-                loadAmount = form.data()
-                // formId = loadAmount.id
-                formsCollection.doc(uid).collection("lists").doc(formId.toString()).get()
-                    .then(form => {
-                        if (form.exists) {
-                            loadData = form.data()
-                            data.push({
-                                type: loadData.data[id].type,
-                                title_id: loadData.data[id].title_id,
-                                title: loadData.data[id].title,
-                                description_id: loadData.data[id].description_id,
-                                description: loadData.data[id].description,
-                            })
-                            console.log("data", "=>", data)
+    // selectFormsCollection.doc("0").get()
+    //     .then(form => {
+    //         if (form.exists) {
+    //             loadAmount = form.data()
+    //             formId = loadAmount.id
+    //             formsCollection.doc(uid).collection("lists").doc(formId).get()
+    //                 .then(form => {
+    //                     if (form.exists) {
+    //                         loadData = form.data()
+    data.push({
+        type: loadData.data[id].type,
+        title_id: loadData.data[id].title_id,
+        title: loadData.data[id].title,
+        description_id: loadData.data[id].description_id,
+        description: loadData.data[id].description,
+    })
 
-                        }
-                        else
-                            console.log('form does not exist');
-                    })
-                    .catch(error => { console.error(error) })
-            }
-            else
-                console.log('form does not exist');
-        })
-        .catch(error => { console.error(error) })
+    //                 }
+    //                 else
+    //                     console.log('form does not exist');
+    //             })
+    //             .catch(error => { console.error(error) })
+    //     }
+    //     else
+    //         console.log('form does not exist');
+    // })
+    // .catch(error => { console.error(error) })
     // console.log("data", "=>", data)
 }
-// function setAnswers0(index, answer) {
-//     data[index].title.push(answer1)
-//     data[index].description.push(answer)
-// }
-function getData1(id) {
-    selectFormsCollection.doc("0").get()
-        .then(form => {
-            if (form.exists) {
-                loadAmount = form.data()
-                // formId = loadAmount.id
-                formsCollection.doc(uid).collection("lists").doc(formId.toString()).get()
-                    .then(form => {
-                        if (form.exists) {
-                            loadData = form.data()
-                            data.push({
-                                type: loadData.data[id].type,
-                                question_id: loadData.data[id].question_id,
-                                question: loadData.data[id].question,
-                                answer_id: loadData.data[id].answer_id,
-                                answer: loadData.data[id].answer,
-                            })
-                            console.log("data", "=>", data)
 
-                        }
-                        else
-                            console.log('form does not exist');
-                    })
-                    .catch(error => { console.error(error) })
-            }
-            else
-                console.log('form does not exist');
-        })
-        .catch(error => { console.error(error) })
+function getData1(id) {
+
+    data.push({
+        type: loadData.data[id].type,
+        question_id: loadData.data[id].question_id,
+        question: loadData.data[id].question,
+        answer_id: loadData.data[id].answer_id,
+        answer: loadData.data[id].answer,
+    })
+
+
 
 }
+function getData2(id) {
+
+    data.push({
+        type: loadData.data[id].type,
+        question_id: loadData.data[id].question_id,
+        question: loadData.data[id].question,
+        star_rating_id: loadData.data[id].star_rating_id,
+        rating: loadData.data[id].rating,
+    })
+    console.log("data", "=>", data)
+
+}
+
 function setAnswer1(index, answer) {
     data[index].answer.push(answer)
     console.log("answer", "=>", answer)
 }
-
+function setAnswer2(index, rating) {
+    data[index].rating.push(rating)
+    console.log("answer", "=>", rating)
+}
 // var value
 // async function myDisplay() {
 //     value = await formsCollection.doc(uid).collection("lists").doc(formId.toString()).get()
@@ -152,6 +146,11 @@ function myFunction() {
                 // getData1(question_amount.type1++)
 
                 render_question1(loadData.data[key].question_id, loadData.data[key].answer_id, loadData.data[key].question)
+                break
+            case 2:
+                getData2(key)
+                // getData1(question_amount.type1++)
+                render_question2(loadData.data[key].question_id, loadData.data[key].question)
                 break
         }
     }
@@ -193,6 +192,36 @@ function render_question1(question_idTextarea, answer_idTextarea, question) {
     </form>
 </div>`);
 }
+function render_question2(type2, question) {
+    var html = document.getElementById("question");
+    html.insertAdjacentHTML("beforeend", `
+    <div class="type3" id="type3${type2}">
+        <div class="row100">
+            <div class="inputBx100" id="div2Question${type2}">
+                <textarea class="title_textarea" id="2question${type2}" onkeypress="auto_grow(this);"
+                    onkeyup="auto_grow(this);" placeholder="${question}" value="${question}"></textarea>
+            </div>
+            <div id="star_rating${type2}">
+            </div>
+            <textarea style="display: none" id="2answer${type2}"></textarea>
+        </div>
+    </div>
+`);
+    $(function () {
+        var rating = new starRating({ // create first star rating system on page load
+            containerId: 'star_rating' + type2, // element id in the dom for this star rating system to use
+            starWidth: 30, // width of stars
+            starHeight: 30, // height of stars
+            ratingPercent: '50%', // percentage star system should start 
+            canRate: true, // can the user rate this star system?
+            onRate: function () { // this function runs when a star is clicked on
+                console.log(rating);
+                document.getElementById("2answer" + type2).value = rating.newRating
+                // alert('You rated ' + rating.newRating + ' starts');
+            }
+        });
+    });
+}
 
 sendData.addEventListener('click', e => {
     e.preventDefault();
@@ -225,11 +254,16 @@ sendData.addEventListener('click', e => {
                                         setAnswer1(i, c[0].value)
                                         question_amount.type1++
                                         break
+                                    case 2:
+                                        c = document.getElementById("2answer" + question_amount.type2);
+                                        console.log("c[0]", "=>", c.value)
+                                        setAnswer2(i, c.value)
+                                        question_amount.type2++
+                                        break
                                 }
                                 i++;
                                 console.log("data-answer", "=>", data)
                             }
-                            console.log("formId3", "=>", formId)
                             formsCollection.doc(uid).collection("lists").doc(formId.toString()).update({
                                 data: data,
                             })
