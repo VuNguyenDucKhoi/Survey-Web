@@ -94,7 +94,7 @@
 
 
 @media screen and (max-width: 600px) {
-    .type1, .type2 {
+    .type1, .type2, .type3, .type4 {
         margin: 10px -50px;
         margin-top: 10px;
         float: left;
@@ -126,16 +126,16 @@
         margin: 20px 0;
         resize: none;
     }
-    .type1 form, .type2 form, .type3, .type4 {
+    .type1 form, .type2 form, .type3 form, .type4 form  {
         width: 100%;
     }
     
-    .type1 .row100, .type2 .row100,  .type3 .row100, .type4 .row100 {
+    .type1 .row100, .type2 .row100, .type3 .row100, .type4 .row100{
         display: flex;
         width: 100%;
     }
     
-    .type1 .row100 .inputBx50, .type2 .row100 .inputBx50, .type3 .row100 .inputBx50, .type4 .row100 .inputBx50  {
+    .type1 .row100 .inputBx50, .type2 .row100 .inputBx50, .type3 .row100 .inputBx50, .type4 .row100 .inputBx50 {
         width: 50%;
         margin: 0 20px;
     }
